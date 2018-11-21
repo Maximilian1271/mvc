@@ -1,0 +1,12 @@
+header#top{ height: 80px; background: #222; margin-bottom: 80px; padding-left: 50px; }
+header#top .logo{ float: left; height: 80px; line-height: 80px; font-weight: 800; color: white; font-size: 32px;}
+
+.nav-main { float: right;}
+.nav-main ul { list-style-type: none; margin: 0; padding: 0; }
+.nav-main ul li{ float: left; }
+.nav-main ul li a{ display: block; padding: 0 30px; border-left: 1px solid #aaa; height: 80px; line-height: 80px; color: white; transition: all .5s linear; }
+.nav-main ul li a:hover{ background: #555; text-decoration: none; }
+
+#bottom{ margin-top: 100px; background: #ccc; padding: 80px 0; font-size: 12px; text-align: center; }
+
+textarea.form-control{ height: 200px; }
