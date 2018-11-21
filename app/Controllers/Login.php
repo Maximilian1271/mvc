@@ -49,4 +49,3 @@ class Login extends Controller{
 		else echo "ah, ah, ah. You didn't say the magic words (Must authenticate via login form)";
 	}
 }
-//test
