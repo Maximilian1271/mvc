@@ -41,7 +41,6 @@ class Login extends Controller{
 					header("Location:".APP_URL."dashboard");
 //					$_SESSION['uname']=$account['uname'];
 //					$_SESSION['login']=true;
-					$this->success();
 				} else return $form->getErrors(5);
 			} else return $form->getErrors(6);
 		} else return $form->getErrors();
