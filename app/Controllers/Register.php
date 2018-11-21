@@ -46,20 +46,29 @@ class Register extends Controller
 
 			if(!$val->getErrors()){
 				$user=new User();
-				$hash=$user->setUser($_POST['uname'], $_POST['email'], $_POST['pw'], $_POST['fname'],$_POST['lname'], $_POST['tel'], $_POST['country']);
-				$mail=new PHPMailer();
-				$mail->IsHTML(true);
-				$mail->AddAddress($_POST['email'], $_POST['fname']."".$_POST['lname']);
-				$mail->SetFrom("maximilian.schaumann@gmail.com", "Maximilian Schaumann");
-				$mail->Subject="Registrierung Abschließen";
-				$link=APP_URL."register/activate/".$hash;
-				$message="<p>Danke für deine Registrierung. Bitte klicke den link um die registrierung abzuschließen</p><p><a href='$link'>Klicke hier um die Registrierung abzuschließen</a></p>";
-				$mail->Body=$message;
-
-				if($mail->Send()){
-					header("Location:".APP_URL."register/success");
-					exit();
+				if($user->checkUname($_POST['uname'])){
+					$val->getErrors(7);
 				}
+				if($user->checkEmail($_POST['email'])){
+					$val->getErrors(8);
+				}
+				if($val->getErrors()!==false){
+					return $val->getErrors();
+				}
+					$hash=$user->setUser($_POST['uname'], $_POST['email'], $_POST['pw'], $_POST['fname'],$_POST['lname'], $_POST['tel'], $_POST['country']);
+					$mail=new PHPMailer();
+					$mail->IsHTML(true);
+					$mail->AddAddress($_POST['email'], $_POST['fname']."".$_POST['lname']);
+					$mail->SetFrom("maximilian.schaumann@gmail.com", "Maximilian Schaumann");
+					$mail->Subject="Registrierung Abschließen";
+					$link=APP_URL."register/activate/".$hash;
+					$message="<p>Danke für deine Registrierung. Bitte klicke den link um die registrierung abzuschließen</p><p><a href='$link'>Klicke hier um die Registrierung abzuschließen</a></p>";
+					$mail->Body=$message;
+
+					if($mail->Send()) {
+						header("Location:" . APP_URL . "register/success");
+						exit();
+					}
 			}else return $val->getErrors();
 		}
 	}

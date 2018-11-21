@@ -5,8 +5,7 @@ use App\Controllers\Error;
 use App\Controllers\Home;
 class Bootstrap
 {
-	public function __construct()
-	{
+	public function __construct(){
 		$url = (isset($_GET['url'])) ? $_GET['url'] : "Home";
 		$url = rtrim($url, "/");
 		$url = explode("/", $url);

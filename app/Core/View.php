@@ -5,13 +5,10 @@ class View
 	public $files_css = array();
 	public $files_js = array();
 
-	public function render($view, $data = array(), $tpl = "app")
-	{
+	public function render($view, $data = array(), $tpl = "app"){
 		require __DIR__ . "/../../views/layouts/" . $tpl . ".php";
 	}
-
-	private function loadCSS()
-	{
+	private function loadCSS(){
 		$markup = "";
 		if (count($this->files_css) > 0) {
 			foreach ($this->files_css as $file) {
@@ -25,9 +22,7 @@ class View
 					echo "<link rel=\"stylesheet\" href=\"/mvc/assets/css/{$filename}\">";
 				}*/
 	}
-
-	private function loadJS()
-	{
+	private function loadJS(){
 		$markup = "";
 		if (count($this->files_css) > 0) {
 			foreach ($this->files_css as $file) {
@@ -38,5 +33,4 @@ class View
 			return false;
 		}
 	}
-
 }

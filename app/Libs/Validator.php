@@ -66,7 +66,7 @@ class Validator
 				array_push($this->error_msg, "{$this->name} hat zu viele Zeichen! Maximal $opt!");
 				break;
 			case 3:
-				array_push($this->error_msg, "{$this->name} ist falsch!");
+				array_push($this->error_msg, "{$this->name} ist invalide!");
 				break;
 			case 4:
 				array_push($this->error_msg, "{$opt[0]} und {$opt[1]} sind nicht gleich!");
@@ -76,6 +76,12 @@ class Validator
 				break;
 			case 6:
 				array_push($this->error_msg, "Die Login daten sind inkorrekt");
+				break;
+			case 7:
+				array_push($this->error_msg, "Username ist bereits vorhanden");
+				break;
+			case 8:
+				array_push($this->error_msg, "Email ist bereits vorhanden");
 				break;
 			default:
 				array_push($this->error_msg, "{$this->name} ist nicht valide!");

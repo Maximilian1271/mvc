@@ -10,14 +10,12 @@ class User extends Model {
 	public function setUser($uname, $email, $password, $fname, $lname, $tel, $country){
 		$user_group = 0;
 		$created_at = time();
-
 		$data = [
 			'fname'=> $fname,
 			'lname' => $lname,
 			'tel' => $tel,
 			'country' => $country
 		];
-
 		$data = json_encode($data);
 		$hash = uniqid();
 		$is_active = 0;
@@ -26,10 +24,8 @@ class User extends Model {
 		$pw = sha1($password . $salt) . ":" . $salt;
 
 		$stmt = $this->db->prepare("INSERT INTO {$this->table_name} (uname, email, password, data, user_group, hash, is_active, created_at) Values (?,?,?,?,?,?,?,?)");
-
 		$stmt->bind_param("ssssisis",$uname, $email, $pw, $data, $user_group, $hash, $is_active, $created_at);
 		$stmt->execute();
-
 		return $hash;
 	}
 	public function getUserByUname($username){
@@ -52,6 +48,20 @@ class User extends Model {
 			return $row['is_active'];
 		}else {
 			return false;
+		}
+	}
+	public function checkUname($uname=null){
+		if($uname!=null){
+			if($this->db->query("SELECT id FROM {$this->table_name} WHERE uname='$uname' LIMIT 1")->num_rows==1){
+				return true;
+			}else return false;
+		}
+	}
+	public function checkEmail($email){
+		if($email!=null){
+			if($this->db->query("SELECT id FROM {$this->table_name} WHERE email='$email' LIMIT 1")->num_rows==1){
+				return true;
+			}else return false;
 		}
 	}
 }

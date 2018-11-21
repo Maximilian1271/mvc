@@ -6,8 +6,7 @@ use App\Libs\Database;
 class Model{
 	public $db;
 	protected $tablename;
-	public function __construct()
-	{
+	public function __construct(){
 		$this->db = new Database();
 	}
 	public function insert($data=array()){
@@ -38,4 +37,3 @@ class Model{
 		return $res->fetch_all(MYSQLI_ASSOC);
 	}
 }
-
