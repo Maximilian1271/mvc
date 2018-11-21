@@ -13,7 +13,7 @@ class Login extends Controller{
 		if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == "POST") {
 			$data['errors'] = $this->login();
 		}
-		$form = new Formbuilder("login", 2);
+		$form = new Formbuilder("login");
 		$form
 			->addInput("text", "uname", "Username")
 			->addInput("password", "pw", "Passwort")

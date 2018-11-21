@@ -1,5 +1,6 @@
 <div class="container">
-	<h2>Login</h2>
+	<div style="max-width: 400px; width: 400px; margin: 0 auto; background: #ccc; padding: 40px;">
+		<h2>Login</h2>
 	<?php
 	if(isset($errors) && count($errors) > 0) {
 		echo "<div class='alert alert-danger'>";
@@ -11,4 +12,5 @@
 	}
 	echo $form;
 	?>
+	</div>
 </div>
