@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Libs\Formbuilder;
 use App\Core\Controller;
+use App\Libs\Sessions;
 use App\Libs\Validator;
 use App\models\User;
 
@@ -35,17 +36,14 @@ class Login extends Controller{
 		if($form->getErrors()===false) {
 			if ($account["uname"] == $_POST['uname'] && sha1($pw . $pw_hash[1]) == $pw_hash[0]) {
 				if($account['is_active']==1){
-					$_SESSION['uname']=$account['uname'];
-					$_SESSION['login']=true;
+					Sessions::set("uname", $account['uname']);
+					Sessions::set("login", true);
+					header("Location:".APP_URL."dashboard");
+//					$_SESSION['uname']=$account['uname'];
+//					$_SESSION['login']=true;
 					$this->success();
 				} else return $form->getErrors(5);
 			} else return $form->getErrors(6);
 		} else return $form->getErrors();
-	}
-	public function success(){
-		if(isset($_SESSION['login'])&&$_SESSION['login']){
-			header("Location:".APP_URL);
-		}
-		else echo "ah, ah, ah. You didn't say the magic words (Must authenticate via login form)";
 	}
 }
