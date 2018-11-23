@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
+use App\Core\GuestController;
 use App\Libs\Formbuilder;
 use App\Libs\PHPMailer;
 use App\Libs\Validator;
 use App\models\User;
-class Register extends Controller
+class Register extends GuestController
 {
 	public function index()
 	{

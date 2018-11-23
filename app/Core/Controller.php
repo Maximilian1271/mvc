@@ -3,7 +3,7 @@
 namespace App\Core;
 
 
-class Controller
+class Controller 
 {
 	public $view;
 	public function __construct()
