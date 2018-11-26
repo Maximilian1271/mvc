@@ -64,4 +64,24 @@ class User extends Model {
 			}else return false;
 		}
 	}
+	public function getUserbyId($id=null){
+		if ($id!=null){
+			$res=$this->db->query("SELECT * FROM {$this->table_name} WHERE id=$id");
+
+			if ($res->num_rows>0){
+				return $res->fetch_assoc();
+			}
+			else return false;
+		}
+	}
+	public function updateUserById($id=null, $data){
+		if ($id!=null){
+			$user_data=[
+				"fname"=> $data['fname'],
+				"lname"=>$data['lname']
+			];
+			$user_data=json_decode($user_data);
+			$this->db->query("UPDATE {$this->table_name} SET data='$user_data' WHERE id=$id");
+		}
+	}
 }
