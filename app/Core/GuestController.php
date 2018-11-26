@@ -14,7 +14,7 @@ class GuestController extends Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->checkGroup;
+		$this->checkGroup();
 	}
 	public function checkGroup(){
 		if (Sessions::get('login')==1){

@@ -39,6 +39,7 @@ class Login extends GuestController {
 					Sessions::set("uname", $account['uname']);
 					Sessions::set("login", true);
 					Sessions::set("user_group", 1);
+					Sessions::set("id", $account['id']);
 					header("Location:".APP_URL."dashboard");
 //					$_SESSION['uname']=$account['uname'];
 //					$_SESSION['login']=true;

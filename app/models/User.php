@@ -29,7 +29,7 @@ class User extends Model {
 		return $hash;
 	}
 	public function getUserByUname($username){
-		$res = $this->db->query("SELECT uname, password, is_active FROM {$this->table_name} WHERE uname ='$username'");
+		$res = $this->db->query("SELECT id, uname, password, is_active FROM {$this->table_name} WHERE uname ='$username'");
 		$account = $res->fetch_assoc();
 		return $account;
 	}
