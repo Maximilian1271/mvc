@@ -78,9 +78,11 @@ class User extends Model {
 		if ($id!=null){
 			$user_data=[
 				"fname"=> $data['fname'],
-				"lname"=>$data['lname']
+				"lname"=>$data['lname'],
+				"tel"=>$data['tel'],
+				"country"=>$data['country']
 			];
-			$user_data=json_decode($user_data);
+			$user_data=json_encode($user_data);
 			$this->db->query("UPDATE {$this->table_name} SET data='$user_data' WHERE id=$id");
 		}
 	}
