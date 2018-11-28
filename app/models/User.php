@@ -29,9 +29,15 @@ class User extends Model {
 		return $hash;
 	}
 	public function getUserByUname($username){
-		$res = $this->db->query("SELECT id, uname, password, is_active FROM {$this->table_name} WHERE uname ='$username'");
-		$account = $res->fetch_assoc();
-		return $account;
+		$res = $this->db->query("SELECT * FROM {$this->table_name} WHERE uname ='$username'");
+		if ($res->num_rows===0){
+			return false;
+		}
+		else{
+			$account = $res->fetch_assoc();
+			return $account;
+		}
+
 	}
 	private function generateSalt(){
 		return rand (1000,9999);
@@ -83,5 +89,9 @@ class User extends Model {
 			$user_data=json_decode($user_data);
 			$this->db->query("UPDATE {$this->table_name} SET data='$user_data' WHERE id=$id");
 		}
+	}
+	public function getAll(){
+		$res=$this->db->query("SELECT * FROM {$this->table_name}")->fetch_all(MYSQLI_ASSOC);
+		return $res;
 	}
 }

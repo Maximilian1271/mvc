@@ -16,7 +16,7 @@ class UserController extends Controller {
 		$this->checkGroup();
 	}
 	private function checkGroup(){
-		if(Sessions::get('login')!=1||Sessions::get('user_group')!=0){
+		if(Sessions::get('login')!=1||Sessions::get('user_group')<0){
 			header("Location".APP_URL."login");
 		}
 	}
