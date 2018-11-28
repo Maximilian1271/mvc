@@ -19,5 +19,5 @@
 			<td><?php echo $user_data['lname']?></td>
 		</tr>
 	</table>
-<!--	<p><a href="profile/edit">Daten editieren</a></p>-->
+	<p><a href="userlist">Zurück</a></p>
 </div>
