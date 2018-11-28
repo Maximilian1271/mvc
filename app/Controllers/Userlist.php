@@ -22,6 +22,7 @@ class Userlist extends UserController{
 		//print_r($_GET);
 	//	$uname=explode("/", $_GET['url']);
 	//	$uname=end($uname);
+		//
 
 		if ($uname!=null){
 			$user=new User();
