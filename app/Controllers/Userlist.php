@@ -28,4 +28,3 @@ class Userlist extends UserController{
 		}
 	}
 }
-//GIthubtest
