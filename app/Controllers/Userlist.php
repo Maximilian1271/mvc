@@ -19,11 +19,6 @@ class Userlist extends UserController{
 		$this->view->render("userlist/index", $data);
 	}
 	public function user($uname=null){
-		//print_r($_GET);
-	//	$uname=explode("/", $_GET['url']);
-	//	$uname=end($uname);
-		//
-
 		if ($uname!=null){
 			$user=new User();
 			$data['user']=$user->getUserByUname($uname);
@@ -33,3 +28,4 @@ class Userlist extends UserController{
 		}
 	}
 }
+//GIthubtest
