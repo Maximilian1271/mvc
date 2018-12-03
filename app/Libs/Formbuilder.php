@@ -77,12 +77,14 @@ class Formbuilder
 		$this->markup .= "</div>"; // form-group end
 		return $this;
 	}
-	public function addTextarea($name = "", $label = false, $value = "", $attr = array(), $column_width = null){
+	public function addTextarea($name = "", $label = false, $value = "", $attr = array(), $column_width = null)
+	{
 		$bootstrap_columns = ($column_width !== null) ? $column_width : $this->columns_grid;
 		$this->markup .= "<div class=\"form-group col-sm-{$bootstrap_columns}\">";
 		if ($label !== false) $this->markup .= "<label for=\"$name\">$label</label>";
 		$this->markup .= "<textarea name=\"$name\" id=\"$name\"";
 		$class = (isset($attr['class'])) ? "form-control {$attr['class']}" : "form-control";
+		$this->markup .= " class=\"$class\"";
 		if (count($attr) > 0) {
 
 			foreach ($attr as $key => $val):

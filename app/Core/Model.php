@@ -8,6 +8,7 @@ class Model{
 	protected $tablename;
 	public function __construct(){
 		$this->db = new Database();
+		$this->db->query("SET names UTF8");
 	}
 	public function insert($data=array()){
 		//["uname"=>"test", "password"=>sha1()"]

@@ -96,4 +96,14 @@ class User extends Model {
 		$res=$this->db->query("SELECT * FROM {$this->table_name}")->fetch_all(MYSQLI_ASSOC);
 		return $res;
 	}
+	public function getIdsByUnames($unames=array()){
+		$userids=array();
+		foreach ($unames as $uname){
+			$res=$this->db->query("SELECT id FROM {$this->table_name} WHERE uname='$uname' LIMIT 1");
+			if ($res->num_rows>0){
+				$user=$res->fetch_assoc();
+				array_push($userids, $user['id']);
+			}
+		}
+	}
 }
